@@ -53,3 +53,11 @@
 6. create very basic react page components for each page i want to create
 7. create my routing for the pages in my app.jsx
 8. create a super simple nav to navigate
+
+## GamesShop ToBuild:
+- InventoryCard for Show All
+- auth page
+    - Login Form
+    - Register
+- createForm
+- show One
