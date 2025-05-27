@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound";
 
 // Components
 import Nav from "./components/Nav/Nav";
+import ProctectedRoutes from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -20,8 +21,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/auth" element={<AuthPage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/create" element={<CreateForm />} />
+
+          <Route element={<ProctectedRoutes />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/create" element={<CreateForm />} />
+          </Route>
+
           <Route path="/product/:id" element={<ShowOnePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

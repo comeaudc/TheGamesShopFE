@@ -1,0 +1,10 @@
+.formContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.toggle{
+    text-decoration: underline;
+    font-weight: bolder;
+    cursor: pointer;
+}
