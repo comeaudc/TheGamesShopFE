@@ -30,9 +30,13 @@ export default function CreateForm() {
         formData.desc &&
         formData.img
       ) {
-        let res = await axios.post(`http://localhost:3000/api/game`, formData, {
-          headers: { token: user },
-        });
+        let res = await axios.post(
+          `https://thegamesshopbe.onrender.com/api/game`,
+          formData,
+          {
+            headers: { token: user },
+          }
+        );
 
         console.log(res.data);
         nav("/");
