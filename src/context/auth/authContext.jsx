@@ -8,7 +8,7 @@ const AuthContext = createContext(); //Created our context with No value
 export default function AuthProvider({ children }) {
   const [cookies, setCookie, removeCookie] = useCookies();
 
-  const baseURL = `https://thegamesshopbe.onrender.com/api/user`;
+  const baseURL = `http://localhost:3000/api/user`;
 
   async function signup(formData) {
     const res = await axios.post(`${baseURL}/register`, formData);

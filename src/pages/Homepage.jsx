@@ -6,7 +6,7 @@ export default function Homepage() {
 
   let getData = async () => {
     try {
-      let res = await axios("https://thegamesshopbe.onrender.com/api/game");
+      let res = await axios("http://localhost:3000/api/game");
 
       setInventory(res.data);
     } catch (err) {
