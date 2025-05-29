@@ -2,7 +2,7 @@ import { createContext, useContext, useMemo } from "react";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 
-const AuthContext = createContext(); //Created out context with No value
+const AuthContext = createContext(); //Created our context with No value
 
 // Created functional component to PROVIDE context
 export default function AuthProvider({ children }) {
