@@ -7,11 +7,10 @@ export default function Nav() {
   const { cookies, logout } = useAuth();
   const nav = useNavigate();
 
+  function handleLogout() {
+    logout();
 
-  function handleLogout(){
-    logout()
-
-    nav('/')
+    nav("/");
   }
   return (
     <nav className={styles.mainNav}>
@@ -28,7 +27,9 @@ export default function Nav() {
             <li>
               <Link to="/create">Create Form</Link>
             </li>
-            <li><button onClick={handleLogout}>Logout</button></li>
+            <li>
+              <button onClick={handleLogout}>Logout</button>
+            </li>
           </>
         ) : (
           <li>

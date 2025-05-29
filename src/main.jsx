@@ -10,10 +10,10 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <CookiesProvider>
       <AppProvider>
-        <BrowserRouter>
+        <BrowserRouter> 
           <App />
         </BrowserRouter>
-      </AppProvider>{" "}
+      </AppProvider>
     </CookiesProvider>
   </StrictMode>
 );
