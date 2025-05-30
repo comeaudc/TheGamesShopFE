@@ -5,6 +5,7 @@ const UserContext = createContext();
 export default function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   const [cart, setCart] = useState(null);
+  const [currentShow, setCurrentShow] = useState(null);
 
   const value = {
     user,

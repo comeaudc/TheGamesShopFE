@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import InventoryItem from "../components/InventoryItem/InventoryItem";
 
+
 export default function Homepage() {
   const [inventory, setInventory] = useState(null);
 

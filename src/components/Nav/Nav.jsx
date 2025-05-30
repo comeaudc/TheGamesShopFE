@@ -1,13 +1,36 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
 import styles from "./Nav.module.css";
 import { useAuth } from "../../context/auth/authContext";
 import { userInfo } from "../../context/user/userContext";
 import { useNavigate } from "react-router-dom";
 
 export default function Nav() {
-  const { user } = userInfo();
+  const { user, setCart, setUser } = userInfo();
   const { cookies, logout } = useAuth();
   const nav = useNavigate();
+
+  useEffect(() => {
+    async function checkUser() {
+      if (cookies.token && !user) {
+        try {
+          let res = await axios.get(`http://localhost:3000/api/user`, {
+            headers: { token: cookies.token },
+          });
+
+          const { username, admin, email } = res.data;
+
+          setCart(res.data.cart.items);
+          setUser({ username, email, admin });
+        } catch (err) {
+          console.error(err.message);
+        }
+      }
+    }
+
+    checkUser();
+  }, []);
 
   function handleLogout() {
     logout();
