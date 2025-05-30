@@ -2,9 +2,10 @@ import styles from "./CreateForm.module.css";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/auth/authContext";
 
 export default function CreateForm() {
-  const user = "681a82866295d894b398e7d9";
+  const { cookies } = useAuth();
   const nav = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -31,7 +32,7 @@ export default function CreateForm() {
         formData.img
       ) {
         let res = await axios.post(`http://localhost:3000/api/game`, formData, {
-          headers: { token: user },
+          headers: { token: cookies.token },
         });
 
         console.log(res.data);

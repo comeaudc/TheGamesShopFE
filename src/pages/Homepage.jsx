@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import InventoryItem from "../components/InventoryItem/InventoryItem";
 
 export default function Homepage() {
   const [inventory, setInventory] = useState(null);
@@ -24,13 +25,7 @@ export default function Homepage() {
 
   let loaded = () => {
     return inventory.map((game) => {
-      return (
-        <div>
-          <h3>{game.title}</h3>
-          <p>$ {game.price}</p>
-          <p>Description: {game.desc}</p>
-        </div>
-      );
+      return <InventoryItem game={game} />;
     });
   };
 

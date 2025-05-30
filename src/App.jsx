@@ -26,7 +26,6 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/create" element={<CreateForm />} />
           </Route>
-
           <Route path="/product/:id" element={<ShowOnePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
