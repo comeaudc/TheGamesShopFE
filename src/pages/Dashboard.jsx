@@ -5,7 +5,7 @@ import axios from "axios";
 
 export default function Dashboard() {
   const { cookies } = useAuth();
-  const { setUser, setCart } = userInfo();
+  const { setUser, setCart, cart } = userInfo();
 
   useEffect(() => {
     async function getUser() {
@@ -29,5 +29,14 @@ export default function Dashboard() {
     getUser();
   }, []);
 
-  return <h1>Dashboard</h1>;
+  return (
+    <>
+      <h1>Dashboard</h1>
+      {cart &&
+        cart.map((el) => {
+          console.log(el)
+          return <p>{el.game.title}</p>;
+        })}
+    </>
+  );
 }
