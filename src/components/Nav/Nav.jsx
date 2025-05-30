@@ -15,9 +15,12 @@ export default function Nav() {
     async function checkUser() {
       if (cookies.token && !user) {
         try {
-          let res = await axios.get(`http://localhost:3000/api/user`, {
-            headers: { token: cookies.token },
-          });
+          let res = await axios.get(
+            `https://thegamesshopbe.onrender.com/api/user`,
+            {
+              headers: { token: cookies.token },
+            }
+          );
 
           const { username, admin, email } = res.data;
 
