@@ -9,6 +9,7 @@ import EditForm from "./pages/Forms/EditForm";
 import Dashboard from "./pages/Dashboard";
 import ShowOnePage from "./pages/ShowOnePage";
 import NotFound from "./pages/NotFound";
+import CategoryPage from "./pages/CategoryPage";
 
 // Components
 import Nav from "./components/Nav/Nav";
@@ -21,6 +22,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/category/:category" element={<CategoryPage />} />
           <Route path="/auth" element={<AuthPage />} />
 
           <Route element={<ProctectedRoutes />}>

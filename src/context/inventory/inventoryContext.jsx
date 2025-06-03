@@ -8,9 +8,14 @@ export default function InventoryProvider({ children }) {
   let removeFromInventory = (id) => {
     setInventory((i) => i.filter((el) => el._id !== id));
   };
+
+  let getCategory = (category) => {
+    return inventory.filter((i) => i.category == category);
+  };
+  
   return (
     <InventoryContext.Provider
-      value={{ inventory, setInventory, removeFromInventory }}
+      value={{ inventory, setInventory, removeFromInventory, getCategory }}
     >
       {children}
     </InventoryContext.Provider>

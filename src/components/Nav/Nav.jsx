@@ -3,12 +3,15 @@ import { useEffect } from "react";
 import axios from "axios";
 import styles from "./Nav.module.css";
 import { useAuth } from "../../context/auth/authContext";
+import { useInventory } from "../../context/inventory/inventoryContext";
 import { userInfo } from "../../context/user/userContext";
 import { useNavigate } from "react-router-dom";
 
 export default function Nav() {
   const { user, setCart, setUser } = userInfo();
+  const { setInventory, inventory } = useInventory();
   const { cookies, logout } = useAuth();
+
   const nav = useNavigate();
 
   useEffect(() => {
@@ -26,11 +29,25 @@ export default function Nav() {
         } catch (err) {
           console.error(err.message);
         }
+
+        if (!inventory) {
+          try {
+            let res = await axios("http://localhost:3000/api/game");
+
+            setInventory(res.data);
+          } catch (err) {
+            console.error(err);
+          }
+        }
       }
     }
 
     checkUser();
   }, []);
+
+  function handleFilter(e) {
+    if (e.target.value) nav(`/category/${e.target.value}`);
+  }
 
   function handleLogout() {
     logout();
@@ -41,20 +58,40 @@ export default function Nav() {
     <nav className={styles.mainNav}>
       <ul>
         <li>
-          <Link to="/">HomePage</Link>
+          <Link to="/">
+            <strong>HomePage</strong>
+          </Link>
+        </li>
+        <li>
+          <label>
+            <strong>Filter By:</strong>
+            <select onChange={handleFilter}>
+              <option value="">...</option>
+              <option value="Board">Board</option>
+              <option value="Dice">Dice</option>
+              <option value="Card">Card</option>
+              <option value="Outdoor">Outdoor</option>
+              <option value="Video">Video</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
         </li>
 
         {cookies.token ? (
           <>
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
-
             {user && user.admin ? (
               <li>
-                <Link to="/create">Create Form</Link>
+                <Link to="/create">
+                  <strong>Create Form</strong>
+                </Link>
               </li>
-            ) : null}
+            ) : (
+              <li>
+                <Link to="/dashboard">
+                  <strong>Dashboard</strong>
+                </Link>
+              </li>
+            )}
 
             <li>
               <button onClick={handleLogout}>Logout</button>
