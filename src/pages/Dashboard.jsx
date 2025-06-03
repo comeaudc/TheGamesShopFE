@@ -32,7 +32,7 @@ export default function Dashboard() {
   ) : (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <h1>Welcome {user.username}!</h1>
-      {cart && <Cart cart={cart} />}
+      {cart && <Cart />}
     </div>
   );
 }
