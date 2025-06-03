@@ -14,19 +14,32 @@ export default function InventoryProvider({ children }) {
   };
 
   let updateInventory = (id, newUpdate) => {
-    let updatedInventory = inventory.map((game) =>{
-      if(game._id == id){
-        return newUpdate
+    let updatedInventory = inventory.map((game) => {
+      if (game._id == id) {
+        return newUpdate;
       }
 
-      return game
-    })
-    setInventory(updatedInventory)
-  }
-  
+      return game;
+    });
+    setInventory(updatedInventory);
+  };
+
+  let addToInventory = (newItem) => {
+    let newInventory = [...inventory, newItem];
+
+    setInventory(newInventory);
+  };
+
   return (
     <InventoryContext.Provider
-      value={{ inventory, setInventory, removeFromInventory, getCategory, updateInventory }}
+      value={{
+        inventory,
+        setInventory,
+        removeFromInventory,
+        getCategory,
+        updateInventory,
+        addToInventory
+      }}
     >
       {children}
     </InventoryContext.Provider>

@@ -3,8 +3,10 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth/authContext";
+import { useInventory } from "../../context/inventory/inventoryContext";
 
 export default function CreateForm() {
+  const { addToInventory } = useInventory();
   const { cookies } = useAuth();
   const nav = useNavigate();
 
@@ -35,8 +37,9 @@ export default function CreateForm() {
           headers: { token: cookies.token },
         });
 
-        console.log(res.data);
-        nav("/");
+        addToInventory(res.data);
+        
+        nav("/dashboard");
       } else {
         return alert("Please Fill In Fields");
       }
