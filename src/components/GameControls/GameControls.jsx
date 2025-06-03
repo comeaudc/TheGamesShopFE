@@ -13,12 +13,9 @@ export default function GameControls({ admin, gameId }) {
 
   async function handleDelete() {
     try {
-      await axios.delete(
-        `https://thegamesshopbe.onrender.com/api/game/${gameId}`,
-        {
-          headers: { token: cookies.token },
-        }
-      );
+      await axios.delete(`http://localhost:3000/api/game/${gameId}`, {
+        headers: { token: cookies.token },
+      });
 
       alert("Delete Successfull");
     } catch (err) {
@@ -31,7 +28,7 @@ export default function GameControls({ admin, gameId }) {
 
     try {
       await axios.post(
-        `https://thegamesshopbe.onrender.com/api/cart/${gameId}`,
+        `http://localhost:3000/api/cart/${gameId}`,
         { qty: qty },
         { headers: { token: cookies.token } }
       );
