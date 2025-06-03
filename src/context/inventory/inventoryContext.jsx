@@ -12,10 +12,21 @@ export default function InventoryProvider({ children }) {
   let getCategory = (category) => {
     return inventory.filter((i) => i.category == category);
   };
+
+  let updateInventory = (id, newUpdate) => {
+    let updatedInventory = inventory.map((game) =>{
+      if(game._id == id){
+        return newUpdate
+      }
+
+      return game
+    })
+    setInventory(updatedInventory)
+  }
   
   return (
     <InventoryContext.Provider
-      value={{ inventory, setInventory, removeFromInventory, getCategory }}
+      value={{ inventory, setInventory, removeFromInventory, getCategory, updateInventory }}
     >
       {children}
     </InventoryContext.Provider>

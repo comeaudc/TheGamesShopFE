@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { userInfo } from "../context/user/userContext";
 import { useAuth } from "../context/auth/authContext";
+import AdminDashboard from "../components/AdminDashboard/AdminDashboard";
 import axios from "axios";
 import Cart from "../components/Cart/Cart";
 
 export default function Dashboard() {
   const { cookies } = useAuth();
-  const { setUser, setCart, cart, user } = userInfo();
+  const { setUser, setCart, user } = userInfo();
 
   useEffect(() => {
     async function getUser() {
@@ -32,7 +33,7 @@ export default function Dashboard() {
   ) : (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <h1>Welcome {user.username}!</h1>
-      {cart && <Cart />}
+      {user.admin? <AdminDashboard  /> : <Cart />}
     </div>
   );
 }

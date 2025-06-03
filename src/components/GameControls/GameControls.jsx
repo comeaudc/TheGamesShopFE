@@ -24,7 +24,7 @@ export default function GameControls({ admin, gameId, inStock }) {
         });
         removeFromInventory(gameId);
         alert("Delete Successfull");
-        nav("/");
+        nav("/dashboard");
       }
 
       return;

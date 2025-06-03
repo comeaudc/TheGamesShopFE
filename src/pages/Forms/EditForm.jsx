@@ -3,8 +3,10 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../context/auth/authContext";
+import { useInventory } from "../../context/inventory/inventoryContext";
 
 export default function EditForm() {
+  const { updateInventory } = useInventory();
   const { id } = useParams();
   const { cookies } = useAuth();
   const nav = useNavigate();
@@ -45,6 +47,8 @@ export default function EditForm() {
             headers: { token: cookies.token },
           }
         );
+
+        updateInventory(id, formData);
 
         nav(`/product/${id}`);
       } else {

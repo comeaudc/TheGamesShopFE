@@ -2,8 +2,8 @@ import { useInventory } from "../context/inventory/inventoryContext";
 import InventoryItem from "../components/InventoryItem/InventoryItem";
 
 export default function Homepage() {
-  const { inventory, setInventory } = useInventory();
-
+  const { inventory } = useInventory();
+  
   let loading = () => {
     return <p>Loading Data</p>;
   };

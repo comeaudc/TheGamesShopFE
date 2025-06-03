@@ -80,19 +80,18 @@ export default function Nav() {
 
         {cookies.token ? (
           <>
+            <li>
+              <Link to="/dashboard">
+                <strong>Dashboard</strong>
+              </Link>
+            </li>
             {user && user.admin ? (
               <li>
                 <Link to="/create">
                   <strong>Create Form</strong>
                 </Link>
               </li>
-            ) : (
-              <li>
-                <Link to="/dashboard">
-                  <strong>Dashboard</strong>
-                </Link>
-              </li>
-            )}
+            ) : null}
 
             <li>
               <button onClick={handleLogout}>Logout</button>
