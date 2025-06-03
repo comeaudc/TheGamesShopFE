@@ -5,7 +5,7 @@ const UserContext = createContext();
 export default function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   const [cart, setCart] = useState(null);
-  const [currentShow, setCurrentShow] = useState(null);
+  const [currentEdit, setCurrentEdit] = useState(null);
 
   const removeItem = (id) => {
     setCart((c) => c.filter((item) => item.game._id !== id));
@@ -16,11 +16,9 @@ export default function UserProvider({ children }) {
   };
 
   const adjustQty = (id, qty) => {
-    setCart(prevCart =>
-    prevCart.map(item =>
-      item.game._id === id ? { ...item, qty } : item
-    )
-  );
+    setCart((prevCart) =>
+      prevCart.map((item) => (item.game._id === id ? { ...item, qty } : item))
+    );
   };
 
   const value = {
@@ -30,9 +28,12 @@ export default function UserProvider({ children }) {
     cart,
     setCart,
 
+    currentEdit,
+    setCurrentEdit,
+
     removeItem,
     getTotal,
-    adjustQty
+    adjustQty,
   };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

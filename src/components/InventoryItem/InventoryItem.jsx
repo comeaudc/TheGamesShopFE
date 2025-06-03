@@ -1,6 +1,5 @@
 import style from "./InventoryItem.module.css";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../context/auth/authContext";
 import { userInfo } from "../../context/user/userContext";
 import GameControls from "../GameControls/GameControls";
 
@@ -12,8 +11,8 @@ export default function InventoryItem({ game }) {
       <Link to={`/product/${game._id}`}>
         <h3>{game.title}</h3>
       </Link>
-      <p>$ {game.price}</p>
-      <p>Description: {game.desc}</p>
+      <p>$ {game.price.toFixed(2)}</p>
+      <p><strong>Description:</strong> {game.desc}</p>
       {user && <GameControls gameId={game._id} admin={user.admin} />}
     </div>
   );

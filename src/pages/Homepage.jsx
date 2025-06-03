@@ -25,7 +25,7 @@ export default function Homepage() {
 
   let loaded = () => {
     return inventory.map((game) => {
-      return <InventoryItem game={game} />;
+      return <InventoryItem key={game._id} game={game} />;
     });
   };
 
