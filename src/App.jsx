@@ -7,7 +7,7 @@ import AuthPage from "./pages/AuthPage";
 import CreateForm from "./pages/Forms/CreateForm";
 import EditForm from "./pages/Forms/EditForm";
 import Dashboard from "./pages/Dashboard";
-import ShowOnePage from "./pages/ShowOnePage";
+import ShowOnePage from "./pages/ShowOnePage/ShowOnePage";
 import NotFound from "./pages/NotFound";
 import CategoryPage from "./pages/CategoryPage";
 

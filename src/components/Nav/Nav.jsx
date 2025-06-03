@@ -47,6 +47,7 @@ export default function Nav() {
 
   function handleFilter(e) {
     if (e.target.value) nav(`/category/${e.target.value}`);
+    else nav("/");
   }
 
   function handleLogout() {
@@ -59,7 +60,7 @@ export default function Nav() {
       <ul>
         <li>
           <Link to="/">
-            <strong>HomePage</strong>
+            <strong>View All</strong>
           </Link>
         </li>
         <li>

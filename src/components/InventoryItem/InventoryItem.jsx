@@ -10,6 +10,7 @@ export default function InventoryItem({ game }) {
     <div className={style.inventoryContainer}>
       <Link to={`/product/${game._id}`}>
         <h3>{game.title}</h3>
+        <img width={"150px"} src={game.img} alt={game.title} />
       </Link>
       <p>$ {game.price.toFixed(2)}</p>
       <p>
