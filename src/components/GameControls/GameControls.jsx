@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth/authContext";
+import { useInventory } from "../../context/inventory/inventoryContext";
 import axios from "axios";
 
-export default function GameControls({ admin, gameId }) {
+export default function GameControls({ admin, gameId, inStock }) {
+  const { removeFromInventory } = useInventory();
   const { cookies } = useAuth();
   const [qty, setQty] = useState(1);
   const nav = useNavigate();
@@ -14,11 +16,18 @@ export default function GameControls({ admin, gameId }) {
 
   async function handleDelete() {
     try {
-      await axios.delete(`http://localhost:3000/api/game/${gameId}`, {
-        headers: { token: cookies.token },
-      });
+      let answer = confirm(`Are you sure you want to delete this item?`);
 
-      alert("Delete Successfull");
+      if (answer) {
+        await axios.delete(`http://localhost:3000/api/game/${gameId}`, {
+          headers: { token: cookies.token },
+        });
+        removeFromInventory(gameId);
+        alert("Delete Successfull");
+        nav("/");
+      }
+
+      return;
     } catch (err) {
       console.error(err);
     }
@@ -47,6 +56,7 @@ export default function GameControls({ admin, gameId }) {
 
   return admin ? (
     <div>
+      <p><strong>In Stock:</strong> {inStock}</p>
       <button onClick={handleEdit}>Edit</button>
       <button onClick={handleDelete}>Delete</button>
     </div>

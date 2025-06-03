@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useInventory } from "../context/inventory/inventoryContext";
 import InventoryItem from "../components/InventoryItem/InventoryItem";
 
 export default function Homepage() {
-  const [inventory, setInventory] = useState(null);
+  const { inventory, setInventory } = useInventory();
 
   let getData = async () => {
     try {
