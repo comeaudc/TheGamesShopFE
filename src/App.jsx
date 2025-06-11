@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 // Pages
 import Homepage from "./pages/Homepage";
-import AuthPage from "./pages/AuthPage";
+import AuthPage from "./pages/AuthPage/AuthPage";
 import CreateForm from "./pages/Forms/CreateForm";
 import EditForm from "./pages/Forms/EditForm";
 import Dashboard from "./pages/Dashboard";
@@ -20,7 +20,7 @@ function App() {
     <>
       <Nav />
       <main>
-        <div className="mainContainer">
+        <div className="main-container">
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/category/:category" element={<CategoryPage />} />

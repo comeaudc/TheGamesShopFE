@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { useAuth } from "../context/auth/authContext";
-import AuthPage from "../pages/AuthPage";
+import AuthPage from "../pages/AuthPage/AuthPage";
 
 export default function ProctectedRoutes() {
   const { cookies } = useAuth();

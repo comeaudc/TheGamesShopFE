@@ -1,12 +1,13 @@
-import LoginForm from "../components/Forms/LoginForm";
-import RegisterForm from "../components/Forms/RegisterForm";
+import LoginForm from "../../components/Forms/LoginForm";
+import RegisterForm from "../../components/Forms/RegisterForm";
+import styles from "./AuthPage.module.css";
 import { useState } from "react";
 
 export default function AuthPage() {
   const [newUser, setNewUser] = useState(false);
 
   return (
-    <div style={{display: 'flex', flexDirection: 'column'}}>
+    <div className={styles.authPage}>
       {newUser ? (
         <RegisterForm setNewUser={setNewUser} />
       ) : (

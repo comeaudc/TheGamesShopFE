@@ -11,18 +11,22 @@
 }
 
 main {
-  padding: 2rem 1rem;
+  height: calc(100vh - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--color-background);
-  color: var(--color-text);
-  min-height: calc(100vh - 60px);
-  box-sizing: border-box;
 }
 
-.main-container {
+
+
+.mainContainer {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto
+  margin: 0 auto;
+  /* no need for flex here unless needed */
 }
+
 
 .inventoryGrid {
   display: grid;
@@ -31,4 +35,181 @@ main {
   padding: 2rem 1rem;
   width: 100%;
   box-sizing: border-box;
+}
+
+/* Container for Dashboard */
+.dashboardContainer {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  background-color: var(--color-background);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+  color: #222;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Cart container */
+.cartContainer {
+  margin-top: 1rem;
+}
+
+.cartList {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Empty cart message */
+.cartEmptyMessage {
+  text-align: center;
+  color: var(--color-secondary);
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+/* Total amount */
+.cartTotal {
+  font-weight: 700;
+  font-size: 1.3rem;
+  text-align: right;
+  color: var(--color-primary);
+  margin-top: 1rem;
+}
+
+/* Cart Item */
+.cartItem {
+  background-color: white;
+  border: 1.5px solid var(--color-accent);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cartItem h3 {
+  margin: 0;
+  color: var(--color-primary);
+}
+
+.cartItemForm {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cartItemForm label {
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.cartItemForm input[type="number"] {
+  width: 70px;
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+  border: 1.5px solid var(--color-accent);
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+}
+
+.cartItemForm input[type="number"]:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 5px var(--color-primary);
+}
+
+.cartItemForm button {
+  background-color: var(--color-primary);
+  border: none;
+  color: white;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.cartItemForm button:hover {
+  background-color: var(--color-secondary);
+  color: #222;
+}
+
+.cartItemLink {
+  display: block;           /* Makes the entire link a block */
+  text-decoration: none;    /* Remove underline */
+  color: inherit;           /* Use current text color */
+  padding: 0.5rem 0;
+  cursor: pointer;
+}
+
+.cartItemLink:hover {
+  color: var(--color-primary); /* Or any hover color */
+  text-decoration: underline;
+}
+
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-accent);
+}
+
+.cartItemLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--color-text);
+  flex-grow: 1;
+}
+
+.cartItemImage {
+  border-radius: 6px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cartItemText h3,
+.cartItemText h4 {
+  margin: 0;
+}
+
+.cartItemForm {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cartItemForm input[type="number"] {
+  width: 60px;
+  padding: 0.3rem 0.5rem;
+  border: 1.5px solid var(--color-accent);
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.cartItemForm button {
+  background-color: var(--color-primary);
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.25s ease;
+}
+
+.cartItemForm button:hover {
+  background-color: var(--color-secondary);
+  color: #222;
 }

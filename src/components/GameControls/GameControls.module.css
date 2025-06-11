@@ -61,3 +61,43 @@
   border-color: var(--color-primary);
   box-shadow: 0 0 5px var(--color-primary);
 }
+
+.gameControls form {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  width: 100%; /* Ensure form uses full width of container */
+  box-sizing: border-box;
+}
+
+.gameControls input[type="number"] {
+  flex-grow: 1;          /* Let input grow but no more than container */
+  min-width: 0;          /* Prevent minimum width issues in flex */
+  max-width: 120px;      /* Limit width so it doesn't overflow */
+  padding: 0.5rem 0.8rem;
+  border: 1.5px solid var(--color-accent);
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+.gameControls input[type="submit"] {
+  flex-shrink: 0;        /* Prevent button from shrinking */
+  padding: 0.6rem 1.2rem;
+  background-color: var(--color-primary);
+  border: none;
+  color: white;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.25s ease;
+  max-width: 130px;      /* Prevent it from growing too big */
+}
+
+.gameControls input[type="submit"]:hover {
+  background-color: var(--color-secondary);
+  color: #222;
+}

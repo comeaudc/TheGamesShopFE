@@ -7,33 +7,30 @@ export default function Cart() {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    let total = getTotal();
-    setTotal(total);
-  }, [cart]);
+    setTotal(getTotal());
+  }, [cart, getTotal]);
 
-  function cartList() {
-    let cartList = cart.map((item) => {
-      return (
+  if (!cart.length) {
+    return (
+      <div className="cartEmptyMessage">
+        <h3>Your cart is empty...</h3>
+        <h3>Go buy something cool!</h3>
+      </div>
+    );
+  }
+
+  return (
+    <div className="cartContainer">
+      <h2>Cart Items:</h2>
+      <ul className="cartList">{cart.map(item => (
         <CartItem
           key={item.game._id}
           qty={item.qty}
           game={item.game}
           id={item.game._id}
         />
-      );
-    });
-
-    return cartList;
-  }
-
-  return cart.length ? (
-    <ul>
-      Cart Items: {cartList()}Total: ${total.toFixed(2)}
-    </ul>
-  ) : (
-    <>
-      <h3>Your cart is empty...</h3>
-      <h3> Go buy something cool!</h3>
-    </>
+      ))}</ul>
+      <div className="cartTotal">Total: ${total.toFixed(2)}</div>
+    </div>
   );
 }

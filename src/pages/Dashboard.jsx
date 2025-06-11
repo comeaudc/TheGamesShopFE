@@ -12,13 +12,11 @@ export default function Dashboard() {
   useEffect(() => {
     async function getUser() {
       try {
-        let res = await axios.get(`http://localhost:3000/api/user`, {
+        const res = await axios.get(`http://localhost:3000/api/user`, {
           headers: { token: cookies.token },
         });
-
-        const { username, admin, email } = res.data;
-
-        setCart(res.data.cart.items);
+        const { username, admin, email, cart } = res.data;
+        setCart(cart.items);
         setUser({ username, email, admin });
       } catch (err) {
         console.error(err.message);
@@ -26,14 +24,14 @@ export default function Dashboard() {
     }
 
     getUser();
-  }, []);
+  }, [cookies.token, setCart, setUser]);
 
-  return !user ? (
-    <p>Loading</p>
-  ) : (
-    <div style={{ display: "flex", flexDirection: "column" }}>
-      <h1>Welcome {user.username}!</h1>
-      {user.admin? <AdminDashboard  /> : <Cart />}
+  if (!user) return <p>Loading...</p>;
+
+  return (
+    <div className="dashboardContainer">
+      <h1 style={{textAlign: "center"}}>Welcome {user.username}!</h1>
+      {user.admin ? <AdminDashboard /> : <Cart />}
     </div>
   );
 }
