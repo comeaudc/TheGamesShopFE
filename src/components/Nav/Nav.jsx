@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import bannerLogo from "../../assets/banner.png";
 import { useEffect } from "react";
 import axios from "axios";
 import styles from "./Nav.module.css";
@@ -31,13 +32,13 @@ export default function Nav() {
         }
       }
       if (!inventory) {
-          try {
-            let res = await axios("http://localhost:3000/api/game");
-            setInventory(res.data);
-          } catch (err) {
-            console.error(err);
-          }
+        try {
+          let res = await axios("http://localhost:3000/api/game");
+          setInventory(res.data);
+        } catch (err) {
+          console.error(err);
         }
+      }
     }
 
     checkUser();
@@ -56,6 +57,10 @@ export default function Nav() {
   return (
     <nav className={styles.mainNav}>
       <ul>
+        <li>
+          <Link to='/'>
+          <img className={styles.navImg} src={bannerLogo} alt="TheGameShop" /></Link>
+        </li>
         <li>
           <Link to="/">
             <strong>View All</strong>

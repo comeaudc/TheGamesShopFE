@@ -8,7 +8,8 @@
 
 .mainNav ul {
   display: flex;
-  align-items: center;
+  align-items:center;
+  justify-content: space-around;
   gap: 2rem;
   list-style: none;
   margin: 0;
@@ -56,6 +57,21 @@
   background-color: var(--color-primary);
   color: #fff;
 }
+.mainNav li:first-child {
+  height: 50px;
+  width: 150px; /* Adjust to your logo's natural width ratio */
+  flex-shrink: 0; /* Prevent it from shrinking in flex layout */
+}
+
+
+.navImg {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+
 
 @media (max-width: 768px) {
   .mainNav ul {
