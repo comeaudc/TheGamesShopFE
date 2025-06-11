@@ -29,8 +29,8 @@ export default function Nav() {
         } catch (err) {
           console.error(err.message);
         }
-        
-        if (!inventory) {
+      }
+      if (!inventory) {
           try {
             let res = await axios("http://localhost:3000/api/game");
             setInventory(res.data);
@@ -38,7 +38,6 @@ export default function Nav() {
             console.error(err);
           }
         }
-      }
     }
 
     checkUser();
