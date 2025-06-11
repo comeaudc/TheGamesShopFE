@@ -7,10 +7,10 @@ export default function InventoryItem({ game }) {
   const { user } = userInfo();
 
   return (
-    <div className={style.inventoryContainer}>
+    <div className={style.inventoryCard}>
       <Link to={`/product/${game._id}`}>
         <h3>{game.title}</h3>
-        <img width={"150px"} src={game.img} alt={game.title} />
+        <img width="150px" src={game.img} alt={game.title} />
       </Link>
       <p>$ {game.price.toFixed(2)}</p>
       <p>

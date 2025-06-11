@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth/authContext";
 import { useInventory } from "../../context/inventory/inventoryContext";
 import axios from "axios";
+import style from "./GameControls.module.css";
 
 export default function GameControls({ admin, gameId, inStock }) {
   const { removeFromInventory } = useInventory();
@@ -54,16 +55,28 @@ export default function GameControls({ admin, gameId, inStock }) {
     nav(`/update/${gameId}`);
   }
 
-  return admin ? (
-    <div>
-      <p><strong>In Stock:</strong> {inStock}</p>
-      <button onClick={handleEdit}>Edit</button>
-      <button onClick={handleDelete}>Delete</button>
+  return (
+    <div className={style.gameControls}>
+      {admin ? (
+        <>
+          <p>
+            <strong>In Stock:</strong> {inStock}
+          </p>
+          <button onClick={handleEdit}>Edit</button>
+          <button onClick={handleDelete}>Delete</button>
+        </>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <input
+            type="number"
+            onChange={handleChange}
+            name="number"
+            value={qty}
+            min="1"
+          />
+          <input type="submit" value="Add to Cart" />
+        </form>
+      )}
     </div>
-  ) : (
-    <form onSubmit={handleSubmit}>
-      <input type="number" onChange={handleChange} name="number" value={qty} />
-      <input type="submit" value="Add to Cart" />
-    </form>
   );
 }

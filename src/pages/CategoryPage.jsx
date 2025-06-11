@@ -10,8 +10,8 @@ export default function CategoryPage() {
   const [items, setItems] = useState(null);
 
   useEffect(() => {
-    if(!inventory){
-        return
+    if (!inventory) {
+      return;
     }
 
     let res = getCategory(category);
@@ -25,5 +25,11 @@ export default function CategoryPage() {
     });
   }
 
-  return items ? displayItems() : <h3>Loading...</h3>;
+  return items ? (
+    <div className="inventoryGrid">{displayItems()}</div>
+  ) : (
+    <h3>Loading...</h3>
+  );
 }
+
+// return inventory ? {loaded()} : loading();

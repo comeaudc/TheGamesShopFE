@@ -1,10 +1,70 @@
-.mainNav > ul {
-  display: flex;
-  justify-content: space-between;
-  list-style-type: none;
-  padding: 0;
+
+.mainNav {
+  background-color: var(--color-background);
+  padding: 1rem 2rem;
+  border-bottom: 2px solid var(--color-accent);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.mainNav > ul > li > a {
+.mainNav ul {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.mainNav li {
+  display: flex;
+  align-items: center;
+}
+
+.mainNav a {
+  color: var(--color-text);
   text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.mainNav a:hover {
+  color: var(--color-primary);
+}
+
+.mainNav select {
+  margin-left: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--color-secondary);
+  border-radius: 4px;
+  background-color: white;
+  color: var(--color-text);
+}
+
+.mainNav button {
+  background-color: var(--color-secondary);
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.mainNav button:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .mainNav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .mainNav {
+    padding: 1rem;
+  }
 }

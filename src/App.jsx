@@ -20,19 +20,21 @@ function App() {
     <>
       <Nav />
       <main>
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/category/:category" element={<CategoryPage />} />
-          <Route path="/auth" element={<AuthPage />} />
+        <div className="mainContainer">
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/category/:category" element={<CategoryPage />} />
+            <Route path="/auth" element={<AuthPage />} />
 
-          <Route element={<ProctectedRoutes />}>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/create" element={<CreateForm />} />
-            <Route path="/update/:id" element={<EditForm />} />
-          </Route>
-          <Route path="/product/:id" element={<ShowOnePage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+            <Route element={<ProctectedRoutes />}>
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/create" element={<CreateForm />} />
+              <Route path="/update/:id" element={<EditForm />} />
+            </Route>
+            <Route path="/product/:id" element={<ShowOnePage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
       </main>
     </>
   );
