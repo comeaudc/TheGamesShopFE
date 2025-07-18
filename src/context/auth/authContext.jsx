@@ -10,7 +10,7 @@ export default function AuthProvider({ children }) {
   const { setUser, setCart } = userInfo();
   const [cookies, setCookie, removeCookie] = useCookies();
 
-  const baseURL = `http://localhost:3000/api/user`;
+  const baseURL = `https://thegamesshopbe.onrender.com/api/user`;
 
   async function signup(formData) {
     const res = await axios.post(`${baseURL}/register`, formData);

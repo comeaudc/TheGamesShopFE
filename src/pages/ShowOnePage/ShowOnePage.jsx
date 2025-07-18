@@ -14,7 +14,9 @@ export default function ShowOnePage() {
   useEffect(() => {
     async function getOne() {
       try {
-        const res = await axios.get(`http://localhost:3000/api/game/${id}`);
+        const res = await axios.get(
+          `https://thegamesshopbe.onrender.com/api/game/${id}`
+        );
         setItem(res.data);
       } catch (err) {
         console.error(err);

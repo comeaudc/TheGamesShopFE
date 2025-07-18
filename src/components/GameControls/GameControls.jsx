@@ -20,9 +20,12 @@ export default function GameControls({ admin, gameId, inStock }) {
       let answer = confirm(`Are you sure you want to delete this item?`);
 
       if (answer) {
-        await axios.delete(`http://localhost:3000/api/game/${gameId}`, {
-          headers: { token: cookies.token },
-        });
+        await axios.delete(
+          `https://thegamesshopbe.onrender.com/api/game/${gameId}`,
+          {
+            headers: { token: cookies.token },
+          }
+        );
         removeFromInventory(gameId);
         alert("Delete Successfull");
         nav("/dashboard");
@@ -39,7 +42,7 @@ export default function GameControls({ admin, gameId, inStock }) {
 
     try {
       await axios.post(
-        `http://localhost:3000/api/cart/${gameId}`,
+        `https://thegamesshopbe.onrender.com/api/cart/${gameId}`,
         { qty: qty },
         { headers: { token: cookies.token } }
       );

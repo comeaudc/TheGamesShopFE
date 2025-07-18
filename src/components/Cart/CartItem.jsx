@@ -28,7 +28,7 @@ export default function CartItem({ qty, game, id }) {
       const change = itemQty - qtyRef.current;
 
       await axios.post(
-        `http://localhost:3000/api/cart/${game._id}`,
+        `https://thegamesshopbe.onrender.com/api/cart/${game._id}`,
         { qty: change },
         { headers: { token: cookies.token } }
       );

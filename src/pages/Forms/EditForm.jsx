@@ -14,7 +14,9 @@ export default function EditForm() {
   useEffect(() => {
     async function getInfo() {
       try {
-        let res = await axios.get(`http://localhost:3000/api/game/${id}`);
+        let res = await axios.get(
+          `https://thegamesshopbe.onrender.com/api/game/${id}`
+        );
 
         setFormData(res.data);
       } catch (err) {
@@ -41,7 +43,7 @@ export default function EditForm() {
         formData.img
       ) {
         let res = await axios.put(
-          `http://localhost:3000/api/game/${id}`,
+          `https://thegamesshopbe.onrender.com/api/game/${id}`,
           formData,
           {
             headers: { token: cookies.token },

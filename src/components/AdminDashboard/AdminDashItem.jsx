@@ -16,9 +16,12 @@ export default function AdminDashItem({ title, price, category, qty, _id }) {
       let answer = confirm(`Are you sure you want to delete this item?`);
 
       if (answer) {
-        await axios.delete(`http://localhost:3000/api/game/${_id}`, {
-          headers: { token: cookies.token },
-        });
+        await axios.delete(
+          `https://thegamesshopbe.onrender.com/api/game/${_id}`,
+          {
+            headers: { token: cookies.token },
+          }
+        );
         removeFromInventory(_id);
         alert("Delete Successfull");
       }

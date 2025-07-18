@@ -19,9 +19,12 @@ export default function Nav() {
     async function checkUser() {
       if (cookies.token && !user) {
         try {
-          let res = await axios.get(`http://localhost:3000/api/user`, {
-            headers: { token: cookies.token },
-          });
+          let res = await axios.get(
+            `https://thegamesshopbe.onrender.com/api/user`,
+            {
+              headers: { token: cookies.token },
+            }
+          );
 
           const { username, admin, email } = res.data;
 
@@ -33,7 +36,7 @@ export default function Nav() {
       }
       if (!inventory) {
         try {
-          let res = await axios("http://localhost:3000/api/game");
+          let res = await axios("https://thegamesshopbe.onrender.com/api/game");
           setInventory(res.data);
         } catch (err) {
           console.error(err);
@@ -58,8 +61,9 @@ export default function Nav() {
     <nav className={styles.mainNav}>
       <ul>
         <li>
-          <Link to='/'>
-          <img className={styles.navImg} src={bannerLogo} alt="TheGameShop" /></Link>
+          <Link to="/">
+            <img className={styles.navImg} src={bannerLogo} alt="TheGameShop" />
+          </Link>
         </li>
         <li>
           <Link to="/">
